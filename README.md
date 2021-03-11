@@ -42,7 +42,7 @@ This script could be adjusted to observe other software, handbooks, firmware, dr
 1. [coolaudio](https://www.coolaudio.com/)
 1. [EUROCOM](https://eurocom.musictribe.com/)
 
-Each of those companies (except of Oberheim) offer some kind of downloadable files which will be useful for some of us. I am personally only interested in midas, behringer, klarkteknik and tcelectronic but some of you might be interested in files from the other [Musictribe](https://www.musictribe.com)companies as well. Feel free to ask how to adjust the request-strings for those companies.
+Each of those companies (except of Oberheim) offer some kind of downloadable files which will be useful for some of us. I am personally only interested in midas, behringer, klarkteknik and tcelectronic but some of you might be interested in files from the other [Musictribe](https://www.musictribe.com) companies as well. Feel free to ask how to adjust the request-strings for those companies.
 
 Have fun!
 
