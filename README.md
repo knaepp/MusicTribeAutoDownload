@@ -1,11 +1,11 @@
-M32DownloadFirmware
+M32DownloadFirmware  
 ================
-This small python3 script accesses the [Musictribe](https://www.musictribe.com)Website and analyzes the version numbers of your products of interest and downloads them to your harddrive.
-Installation on you iOS Device
+This small python3 script accesses the [Musictribe](https://www.musictribe.com) Website and analyzes the version numbers of your products of interest and downloads them to your harddrive.
+Installation on you iOS Device  
 ====================
 Just copy the python-script to a somehow useable place. Include the MusicTribeAutoDownload.ini configuration file in the same directory as the python script. 
 In our case the script runs on a linux machine which is used for other subjects. The crontab runs the python script once each hour.
-Configuration
+Configuration  
 ===========
 The configuration of the script is configured using the ini-file. This file is structured using sections. 
 
