@@ -5,7 +5,7 @@ This small python3 script accesses the [Musictribe](https://www.musictribe.com) 
 Installation on you iOS Device  
 ====================  
 Just copy the python-script to a somehow useable place. Include the MusicTribeAutoDownload.ini configuration file in the same directory as the python script. 
-In our case the script runs on a linux machine which is used for other subjects. The crontab runs the python script once each hour.  
+In our case the script runs on a linux machine which is used for other subjects and crontab runs the script once an hour. The script checks each downloadable file on the website of musictribe that you want to be observed and downloads only if a new file would be available. That means naturally that it will download all files that are available when you start the script the first time. If you choose to downoad a lot than a lot will be downloaded. For example downloading alle firmware files from midas means downloading round about 30 Gb of firmware releases for all Midas consoles. So just download what you really need.
 
 Configuration  
 ===========  
