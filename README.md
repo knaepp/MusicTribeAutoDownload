@@ -18,8 +18,9 @@ The configuration of the script is configured using the ini-file. This file is s
 The Global section needs on parameter downloadPath which contains a directoy path where the files should be copied to. Subdirectories will be created as neede. A subdirectory for each [Musictribe](https://www.musictribe.com)company that you download files from will be created.
 
 The Mail section contains mail based information. The script needs an email-address and an smtp-server to send out mails each time when a new file has been download. The other could be used to maintain the message text send out to recipients.
-
-The URL settings  contain one ore several urls that should be monitored to download files from [Musictribe](https://www.musictribe.com)download section. The current file contains several examples to download files from the Behringer or Midas Website.
+  
+The URL settings  contain one ore several urls that should be monitored to download files from [Musictribe](https://www.musictribe.com)download section. The current file contains several examples to download files from the Behringer or Midas Website.  
+  
 Other Software from [Musictribe](https://www.musictribe.com)
 ===
 
