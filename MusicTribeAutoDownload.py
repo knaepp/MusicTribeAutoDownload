@@ -3,7 +3,7 @@ import os
 import smtplib
 import requests
 import urllib
-
+import hashlib
 
 baseDirectory=""
 downloadPath=""
@@ -42,7 +42,7 @@ def readConfig():
 
 def readURLs():
     lines=[]
-    print(AllElements)
+    #print(AllElements)
     for f in AllElements:
         lines.append(Applications.get(f))
     return lines
@@ -55,7 +55,7 @@ def reqJsonFromUrl(dsource):
 
 def checkTargetPath( tpath ):
     fullpath=tpath
-    print(fullpath)
+    #print(fullpath)
     if not os.path.exists(tpath):
         os.makedirs(fullpath)
 
@@ -74,7 +74,7 @@ def fileNotExists(cURL,tarPath):
 def downloadFromURL2(downloadURL, dlPath):
     retVal=True
     try:
-        print("Downloading from " + downloadURL)
+        #print("Downloading from " + downloadURL)
         with requests.get(downloadURL, stream=True, timeout=5) as download:
             download.raise_for_status()
             print("Downloading  to " + dlPath)
@@ -131,6 +131,14 @@ def getVendor(urlhost):
     HostName=hostName[positionHostName]
     return HostName
 
+def convertPath(myPath):
+    if myPath.find('(') > -1:
+        myVarB=myPath.encode()
+        print(myVarB)
+        return hashlib.sha256(myVarB).hexdigest()
+    else:
+        return myPath
+
 myIniFile=getPropertyFile()
 config=configparser.RawConfigParser()
 config.read(myIniFile)
@@ -152,8 +160,10 @@ for c in URLs:
             model=x['modelName']
             groupName=x['groupName']
             modelTitle=x['title']
-            exactPath=downloadPath + os.path.sep + Vendor + os.path.sep + model + os.path.sep + groupName + os.path.sep + modelTitle
-            print("Processing " + url)
+            modelTitleDir=convertPath(modelTitle)
+            subGroupName=x['subGroupName']
+            exactPath=downloadPath + os.path.sep + Vendor + os.path.sep + model + os.path.sep + groupName + os.path.sep + subGroupName
+            #print("Processing " + url)
             if not url.startswith("//"):
                 if (url.find("apple") == -1):
                     if fileNotExists(url,exactPath):
@@ -162,7 +172,9 @@ for c in URLs:
                         #clearScreen()
                         dlfile=getFileName(url)
                         if downloadFromURL2(url,exactPath + os.path.sep + dlfile):
+                                print("Downloading file: ")
+                                print(exactPath + os.path.sep + dlfile)
                                 downloadedFiles.append(exactPath + os.path.sep + dlfile)
 if len(downloadedFiles)>0:
-    os.system('clear')
+    #os.system('clear')
     sendMail(downloadedFiles)
