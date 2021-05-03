@@ -134,7 +134,7 @@ def getVendor(urlhost):
 def convertPath(myPath):
     if myPath.find('(') > -1:
         myVarB=myPath.encode()
-        print(myVarB)
+        #print(myVarB)
         return hashlib.sha256(myVarB).hexdigest()
     else:
         return myPath
