@@ -137,6 +137,8 @@ def convertPath(myPath):
         myVarB=myPath.encode()
         #print(myVarB)
         return hashlib.sha256(myVarB).hexdigest()
+    elif myPath.find(',') > -1:
+        return myPath.replace(',', '')
     else:
         return myPath
 
