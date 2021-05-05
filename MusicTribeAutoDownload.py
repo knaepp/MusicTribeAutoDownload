@@ -5,6 +5,7 @@ import requests
 import urllib
 import hashlib
 
+
 baseDirectory=""
 downloadPath=""
 salutation=""
@@ -166,15 +167,16 @@ for c in URLs:
             #print("Processing " + url)
             if not url.startswith("//"):
                 if (url.find("apple") == -1):
-                    if fileNotExists(url,exactPath):
-                        print(exactPath)
-                        os.makedirs(exactPath,exist_ok=True)
-                        #clearScreen()
-                        dlfile=getFileName(url)
-                        if downloadFromURL2(url,exactPath + os.path.sep + dlfile):
-                                print("Downloading file: ")
-                                print(exactPath + os.path.sep + dlfile)
-                                downloadedFiles.append(exactPath + os.path.sep + dlfile)
+                    if (url.find("google") == -1):
+                        if fileNotExists(url,exactPath):
+                            print(exactPath)
+                            os.makedirs(exactPath,exist_ok=True)
+                            #clearScreen()
+                            dlfile=getFileName(url)
+                            if downloadFromURL2(url,exactPath + os.path.sep + dlfile):
+                                    print("Downloading file: ")
+                                    print(exactPath + os.path.sep + dlfile)
+                                    downloadedFiles.append(exactPath + os.path.sep + dlfile)
 if len(downloadedFiles)>0:
     #os.system('clear')
     sendMail(downloadedFiles)
