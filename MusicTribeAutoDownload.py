@@ -164,7 +164,8 @@ for c in URLs:
             groupName=x['groupName']
             modelTitle=x['title']
             modelTitleDir=convertPath(modelTitle)
-            subGroupName=x['subGroupName']
+            subGroupName=convertPath(x['subGroupName'])
+            print subGroupName
             exactPath=downloadPath + os.path.sep + Vendor + os.path.sep + model + os.path.sep + groupName + os.path.sep + subGroupName
             #print("Processing " + url)
             if not url.startswith("//"):
