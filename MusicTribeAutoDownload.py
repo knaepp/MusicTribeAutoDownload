@@ -43,7 +43,6 @@ def readConfig():
 
 def readURLs():
     lines=[]
-    #print(AllElements)
     for f in AllElements:
         lines.append(Applications.get(f))
     return lines
@@ -56,7 +55,6 @@ def reqJsonFromUrl(dsource):
 
 def checkTargetPath( tpath ):
     fullpath=tpath
-    #print(fullpath)
     if not os.path.exists(tpath):
         os.makedirs(fullpath)
 
@@ -75,7 +73,6 @@ def fileNotExists(cURL,tarPath):
 def downloadFromURL2(downloadURL, dlPath):
     retVal=True
     try:
-        #print("Downloading from " + downloadURL)
         with requests.get(downloadURL, stream=True, timeout=5) as download:
             download.raise_for_status()
             print("Downloading  to " + dlPath)
@@ -135,7 +132,6 @@ def getVendor(urlhost):
 def convertPath(myPath):
     if myPath.find('(') > -1:
         myVarB=myPath.encode()
-        #print(myVarB)
         return hashlib.sha256(myVarB).hexdigest()
     elif myPath.find(',') > -1:
         return myPath.replace(',', '')
@@ -165,21 +161,16 @@ for c in URLs:
             modelTitle=x['title']
             modelTitleDir=convertPath(modelTitle)
             subGroupName=convertPath(x['subGroupName'])
-            print(subGroupName)
             exactPath=downloadPath + os.path.sep + Vendor + os.path.sep + model + os.path.sep + groupName + os.path.sep + subGroupName
-            #print("Processing " + url)
             if not url.startswith("//"):
                 if (url.find("apple") == -1):
                     if (url.find("google") == -1):
                         if fileNotExists(url,exactPath):
-                            print(exactPath)
                             os.makedirs(exactPath,exist_ok=True)
-                            #clearScreen()
                             dlfile=getFileName(url)
                             if downloadFromURL2(url,exactPath + os.path.sep + dlfile):
                                     print("Downloading file: ")
                                     print(exactPath + os.path.sep + dlfile)
                                     downloadedFiles.append(exactPath + os.path.sep + dlfile)
 if len(downloadedFiles)>0:
-    #os.system('clear')
     sendMail(downloadedFiles)
